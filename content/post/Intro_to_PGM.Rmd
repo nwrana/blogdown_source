@@ -1,0 +1,43 @@
+---
+title: "Introduction to Probabilistic Graphical Models"
+author: Nathan Wrana
+date: 2018-01-02
+output: html_document
+tags: ["PGM", "Probabilistic Graphical Models", "Markov", "Bayesian"]
+---
+
+## References
+
+This series is a collection of work taken from many excellent tutorials and blogs written by other people who are a lot smarter than me. I do not claim any of this work as my own, but rather I am using this platform to help me stay organized and focused with the end goal of furthering my understanding and interest in PGMs at a more fundamental level.  
+
+Please check out the following great links:  
+
+1. [PGM Tutorial - Part 1. Goyal, Parsoon. 2017](https://blog.statsbot.co/probabilistic-graphical-models-tutorial-and-solutions-e4f1d72af189)  
+2. [PGM Tutorial - Part 2. Goyal, Parsoon. 2017](https://blog.statsbot.co/probabilistic-graphical-models-tutorial-d855ba0107d1)  
+3. [Understanding Probabilistic Graphical Models Intuitively. Sharma, Neeraj. 2016](https://medium.com/@neerajsharma_28983/intuitive-guide-to-probability-graphical-models-be81150da7a)
+4. [A Brief Introduction to Graphical Models and Bayesian Networks. Murphy, Kevin. 1998](http://www.cs.ubc.ca/~murphyk/Bayes/bnintro.html#explainaway)
+
+## Prelude
+
+I believe anyone can create a model in R or Python by simply calling a function or working within a framework with pre-built solutions. There is nothing wrong with this, in fact this is what I do - why re-invent the wheel ? But before I can follow anything with confidence, I need to understand the underlying assumptions, and limitations, these functions are built upon. With this in mind, I have created a series of posts dedicated to understanding Probabilistic Graphical Models, or PGMs. The goal of this series is to balance intuition with depth. I will be going into detail, this is necessary, but hopefully the way my explanations are written will be at a high enough level that anyone can understand.  
+
+This series will be broken into five separate posts. This first is meant to be a gentle *Introduction* into the world of PGMs, exploring what they are used for and why we need them. I will introduce basic concepts in Probabiltiy Theory, Statistics, and Graph Theory. The second and third posts will discuss *Representation*, or what exactly a graphical model is. We will study __Bayesian Networks__ first then move on to __Markov Fields__. The fourth post will discuss *Inference* and how we can use these models to efficiently answer probabilistic queries. Finally, the fifth and last post will focus on *Learning*, or what do we do if we don't know what the mode is. In both _Inference_ and _Learning_ we will explore the most common algorithms and actually build them from the bottom up.  
+
+## Why Do We Need PGMs ?
+
+A Probabilistic Graphical Model (PGM)is a powerful framework that can be use to learn models that need to incorporate **dependency**. For example, in natrual language processing, the A lot of common problems in machine learning involve classification of isolated data points that are independent from each other. For example, given a image, predict whether it contains a cat or a dog. However it turns out that many problems don't fit this framework and it is not obvious  
+
+## Neural Network - PGM Relationship  
+
+Both NN and PGMs solve inference and learning problems but the major difference is how they incorporate prior knowledge into the exisiting model. PGMs have the advantage over deep networks in that they are highly explainable, and you can go back and look at the chain of reasoning. For some problem domains, this part is more important than prediction accuracy.
+
+
+## PGM Framework
+
+Probabilistic Graphical Models are graph-like structures made up of nodes and connecting lines. Each node represents a random variable that assumes a particular distribution, and each connecting line is called an *edge*, used to encode a relationship between nodes. Depending on whether the graph is directed or undirected, i.e. whether information flows strictly from one node to another or in both directions, we can classify a graphical model as being either a **Bayesian Network** or **Markov Network**, respectively.  
+
+Why do we need both classes of models ? A Bayesian Network is used when the relationship between variables is obvious. For example, we have a very simple model that describes how the *Grade* of a student is determined by course *Difficulty* and student *Intelligence*. *Grade* cannot affect course *Difficulty* nor student *Intelligence*. Therefore, flow of information is best described as moving in one direction.  
+
+A Markov Network is best used in situations where a relationship between nodes exists but there is no cause-effect. An example is image recognition, where each pixel represents a node. Neighbouting pixels will affect each other, but the interaction is symmetric. Undirected graphical models are better suited in this application.   
+
+Directed models have a more complicated notion of independence than undirected models, however they do have advantages. They incorporate **causality** which can be used as a guide to bring structure into the graph. Directed graphs are easier to learn. 
